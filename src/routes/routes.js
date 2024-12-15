@@ -2,6 +2,7 @@ import express from "express";
 import userRouter from "./user.js";
 import customerRoutes from "./customer.js";
 import inventoryRoutes from "./inventry.js";
+import categoryRoutes from "./category.js";
 
 const router = express.Router();
 
@@ -10,5 +11,6 @@ const router = express.Router();
 // });
 router.use("/customer", customerRoutes);
 router.use("/inventry", inventoryRoutes);
+router.use("/category", categoryRoutes)
 
 export default router;
