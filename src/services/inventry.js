@@ -28,13 +28,6 @@ export const addInventory = async (req) => {
 
 export const getAllInventory = async () => {
   const inventory = await Inventry.find().select("-__v");
-  if (!inventory.length) {
-    throw new CustomError(
-      statusCodes?.notFound,
-      Message?.notFound,
-      errorCodes?.not_found,
-    );
-  }
   return inventory;
 };
 
