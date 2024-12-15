@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "8c293544-9a0f-4f83-b569-a481cb3bc1f5",
+		"name": "WareHouse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "26159388"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Johnny\",\r\n  \"lastName\": \"Doe\",\r\n  \"phoneNo\": \"9876543210\",\r\n  \"email\": \"johnny.doe@example.com\",\r\n  \"aadharNo\": \"123456789012\",\r\n  \"country\": \"India\",\r\n  \"address\": \"456, Park Avenue, Delhi\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7200/api/v1/customer/add"
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7200/api/v1/customer/675dfa085d4a4fa1f6680d45"
+					},
+					"response": []
+				},
+				{
+					"name": "findall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7200/api/v1/customer/list"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Alok\",\r\n  \"lastName\": \"Chaturvedi\",\r\n  \"phoneNo\": \"9876543210\",\r\n  \"email\": \"johnny.doe@example.com\",\r\n  \"aadharNo\": \"123456789012\",\r\n  \"country\": \"India\",\r\n  \"address\": \"456, Park Avenue, Delhi\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7200/api/v1/customer/675dfa085d4a4fa1f6680d45"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "inventry",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"lot_number\": 123456,\r\n  \"qty\": 100,\r\n  \"start_date\": \"2024-11-01T00:00:00Z\",\r\n  \"is_loan\": false,\r\n  \"category\": \"5f8d0d55b5e8f1a3b2f3f3d3\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7200/api/v1/inventry/add"
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7200/api/v1/inventry/list"
+					},
+					"response": []
+				},
+				{
+					"name": "byId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7200/api/v1/inventry/675e9937a1e06c1dacc5f238"
+					},
+					"response": []
+				},
+				{
+					"name": "udpate",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"lot_number\": 123456,\r\n  \"qty\": 100,\r\n  \"start_date\": \"2024-10-01T00:00:00Z\",\r\n  \"is_loan\": true,\r\n  \"category\": \"5f8d0d55b5e8f1a3b2f3f3d3\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7200/api/v1/inventry/675e9937a1e06c1dacc5f238"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
