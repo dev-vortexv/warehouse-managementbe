@@ -46,10 +46,21 @@ const deleteCustomer = async (req, res, next) => {
   res.status(statusCodes?.ok).send({ message: Message?.deleteSuccess });
 };
 
+const getInventoryAndCustomerDetails = async (req, res, next) => {
+  const inventory = await customerService.getInventoryAndCustomerDetails(
+    req?.query,
+  );
+  if (!inventory) {
+    throw new CustomError(Message?.notFound, statusCodes?.notFound);
+  }
+  res.status(statusCodes?.ok).send(inventory);
+};
+
 export default {
   addCustomer,
   getAllCustomers,
   getCustomerById,
   updateCustomer,
   deleteCustomer,
+  getInventoryAndCustomerDetails,
 };

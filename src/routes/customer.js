@@ -8,5 +8,9 @@ customerRoutes.get("/list", asyncHandler(customerController.getAllCustomers));
 customerRoutes.get("/:id", asyncHandler(customerController.getCustomerById));
 customerRoutes.put("/:id", asyncHandler(customerController.updateCustomer));
 customerRoutes.delete("/:id", asyncHandler(customerController.deleteCustomer));
+customerRoutes.get(
+  "/customer/inventry-details",
+  asyncHandler(customerController.getInventoryAndCustomerDetails),
+);
 
 export default customerRoutes;

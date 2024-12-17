@@ -24,10 +24,14 @@ const customerSchema = new Schema(
       trim: true,
       lowercase: true,
     },
-    aadharNo: {
+    IdentityNo: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    IdentityType: {
       type: String,
       required: true,
-      unique: true,
     },
     country: {
       type: String,

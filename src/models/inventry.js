@@ -12,19 +12,39 @@ const inventrySchema = new Schema(
       required: true,
       trim: true,
     },
+    remaining_qty: {
+      type: Number,
+      trim: true,
+      default: null,
+    },
     start_date: {
       type: Date,
       required: true,
-      unique: true,
     },
     is_loan: {
       type: Boolean,
-      required: true,
       default: false,
     },
     category: {
       type: mongoose.Types.ObjectId,
       required: true,
+      ref: "category",
+    },
+    customer: {
+      type: mongoose.Types.ObjectId,
+      required: true,
+      ref: "customer",
+    },
+    discount: {
+      type: Number,
+      default: 0,
+    },
+    product_name: {
+      type: String,
+    },
+    product_desc: {
+      type: String,
+      default: null,
     },
     active: {
       type: Boolean,

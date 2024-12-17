@@ -1,10 +1,20 @@
 import { errorCodes, Message, statusCodes } from "../core/common/constant.js";
 import CustomError from "../utils/exception.js";
 import { Inventry } from "../models/inventry.js";
+import mongoose from "mongoose";
+import { Customer } from "../models/customer.js";
 
 export const addInventory = async (req) => {
-  const { lot_number, qty, start_date, is_loan, category } = req.body;
-
+  const {
+    lot_number,
+    qty,
+    start_date,
+    is_loan,
+    category,
+    customer,
+    product_name,
+    product_desc,
+  } = req.body;
   const isInventoryExist = await Inventry.findOne({ lot_number });
   if (isInventoryExist) {
     throw new CustomError(
@@ -20,6 +30,9 @@ export const addInventory = async (req) => {
     start_date,
     is_loan,
     category,
+    customer,
+    product_name,
+    product_desc,
   });
 
   const inventoryData = await inventory.save();
@@ -27,20 +40,27 @@ export const addInventory = async (req) => {
 };
 
 export const getAllInventory = async () => {
-  const inventory = await Inventry.find().select("-__v");
+  const inventory = await Inventry.find()
+    .select("-__v")
+    .populate(["customer", "category"]);
   return inventory;
 };
 
 export const getInventoryById = async (id) => {
-  const inventory = await Inventry.findById(id).select("-__v");
+  const inventory = await Inventry.findById(id)
+    .select("-__v")
+    .populate(["customer", "category"]);
   if (!inventory) {
-    throw new CustomError(
-      statusCodes?.notFound,
-      Message?.notFound,
-      errorCodes?.not_found,
-    );
+    return {};
   }
   return inventory;
+};
+
+export const getInventoryCustomerById = async (customerId) => {
+  const whereCondition = { customer: new mongoose.Types.ObjectId(customerId) };
+  return await Inventry.find(whereCondition)
+    .select("-__v")
+    .populate(["customer", "category"]);
 };
 
 export const updateInventory = async (id, updateData) => {

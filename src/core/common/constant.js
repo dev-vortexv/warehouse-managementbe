@@ -41,13 +41,12 @@ export const Message = Object.freeze({
   loginError: "Login Error",
   notUpdate: "Update Failed",
   serverError: "Intrnal Server Error",
-  lot_alrready_exist : "Lot Number Already Exist",
-
+  lot_alrready_exist: "Lot Number Already Exist",
 });
 
 export const errorCodes = Object.freeze({
   already_exist: "ALREADY_EXIST",
-  lot_alrready_exist : "LOT_ALREADY_EXIST",
+  lot_alrready_exist: "LOT_ALREADY_EXIST",
   invalid_input: "INVALID_INPUT",
   not_found: "NOT_FOUND",
   unauthorized: "UNAUTHORIZED",

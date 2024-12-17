@@ -3,9 +3,16 @@ import { errorCodes, Message, statusCodes } from "../core/common/constant.js";
 import CustomError from "../utils/exception.js";
 
 export const addCustomer = async (req) => {
-  console.log("ddddddddddddddddddddddd");
-  const { firstName, lastName, phoneNo, email, aadharNo, country, address } =
-    req.body;
+  const {
+    firstName,
+    lastName,
+    phoneNo,
+    email,
+    country,
+    address,
+    IdentityNo,
+    IdentityType,
+  } = req.body;
   const isCustomerAlreadyExist = await Customer.findOne({ email });
   if (isCustomerAlreadyExist) {
     throw new CustomError(
@@ -20,9 +27,10 @@ export const addCustomer = async (req) => {
     lastName,
     phoneNo,
     email,
-    aadharNo,
     country,
     address,
+    IdentityType,
+    IdentityNo,
   });
   const customerData = await customer.save();
   return customerData;
@@ -82,4 +90,12 @@ export const deleteCustomer = async (id) => {
   return {
     message: Message?.deleteSuccess,
   };
+};
+
+export const getInventoryAndCustomerDetails = async (data) => {
+  const { customerId, inventryId } = data;
+  const whereCondition = { customer: new mongoose.Types.ObjectId(customerId) };
+  return await Customer.find(whereCondition)
+    .select("-__v")
+    .populate("inventry");
 };
