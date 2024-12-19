@@ -38,13 +38,6 @@ export const addCustomer = async (req) => {
 
 export const getAllCustomers = async () => {
   const customers = await Customer.find().select("-__v");
-  if (!customers.length) {
-    throw new CustomError(
-      statusCodes?.notFound,
-      Message?.notFound,
-      errorCodes?.not_found,
-    );
-  }
   return customers;
 };
 

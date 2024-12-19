@@ -2,29 +2,30 @@ import mongoose, { Schema } from "mongoose";
 
 const loanSchema = new Schema(
   {
-    duration: {
+    duration_in_month: {
       type: Number,
       required: true,
     },
     status: {
       type: String,
-      trim: true,
     },
     interest_percentage: {
       type: Date,
       required: true,
     },
     amount: {
-      type: Boolean,
+      type: Number,
       default: false,
     },
     inventry: {
       type: mongoose.Types.ObjectId,
       required: true,
+      ref: "inventry",
     },
     customer: {
       type: mongoose.Types.ObjectId,
       required: true,
+      ref: "customer",
     },
     active: {
       type: Boolean,

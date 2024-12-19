@@ -1,13 +1,13 @@
 import { Router } from "express";
 import { asyncHandler } from "../utils/asyncWrapper.js";
-import categoryController from "../controllers/category.js";
+import loanController from "../controllers/loan.js";
 
 const loanRoutes = Router();
 
-loanRoutes.post("/add", asyncHandler(categoryController.addCategory));
-loanRoutes.get("/list", asyncHandler(categoryController.getAllCategories));
-loanRoutes.get("/:id", asyncHandler(categoryController.getCategoryById));
-loanRoutes.put("/:id", asyncHandler(categoryController.updateCategory));
-loanRoutes.delete("/:id", asyncHandler(categoryController.deleteCategory));
+loanRoutes.post("/add", asyncHandler(loanController.addLoan));
+loanRoutes.get("/list", asyncHandler(loanController.getAllLoans));
+loanRoutes.get("/:id", asyncHandler(loanController.getLoanById));
+loanRoutes.put("/:id", asyncHandler(loanController.updateLoan));
+loanRoutes.delete("/:id", asyncHandler(loanController.deleteLoan));
 
 export default loanRoutes;

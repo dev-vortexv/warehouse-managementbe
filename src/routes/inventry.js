@@ -12,7 +12,7 @@ inventoryRoutes.get(
 );
 inventoryRoutes.get(
   "/customer/inventry-details",
-  asyncHandler(inventoryController.getInventoryByCustomerId),
+  asyncHandler(inventoryController.getInventoryAndCustomerDetails),
 );
 inventoryRoutes.put("/:id", asyncHandler(inventoryController.updateInventory));
 inventoryRoutes.delete(

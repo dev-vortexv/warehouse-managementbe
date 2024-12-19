@@ -18,10 +18,12 @@ const transactionSchema = new Schema(
     inventry: {
       type: mongoose.Types.ObjectId,
       required: true,
+      ref: "inventry",
     },
     customer: {
       type: mongoose.Types.ObjectId,
       required: true,
+      ref: "customer",
     },
     active: {
       type: Boolean,
