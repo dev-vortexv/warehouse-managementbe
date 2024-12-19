@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"firstName\": \"Johnny\",\r\n  \"lastName\": \"Doe\",\r\n  \"phoneNo\": \"9876543210\",\r\n  \"email\": \"johnny.doe@example.com\",\r\n  \"aadharNo\": \"123456789012\",\r\n  \"country\": \"India\",\r\n  \"address\": \"456, Park Avenue, Delhi\"\r\n}\r\n",
+							"raw": "{\r\n  \"firstName\": \"Johnny\",\r\n  \"lastName\": \"Doe\",\r\n  \"phoneNo\": \"9876863210\",\r\n  \"email\": \"johnnn7y.doe@example.com\",\r\n  \"country\": \"India\",\r\n  \"address\": \"456, Park Avenue, Delhi\",\r\n  \"IdentityNo\":\"78786655\",\r\n  \"IdentityType\":\"aadharNo\"\r\n\r\n\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -32,7 +32,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:7200/api/v1/customer/675dfa085d4a4fa1f6680d45"
+						"url": "http://localhost:7200/api/v1/customer/6764993f5a6502d1047008dd"
 					},
 					"response": []
 				},
@@ -75,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"lot_number\": 123456,\r\n  \"qty\": 100,\r\n  \"start_date\": \"2024-11-01T00:00:00Z\",\r\n  \"is_loan\": false,\r\n  \"category\": \"5f8d0d55b5e8f1a3b2f3f3d3\"\r\n}\r\n",
+							"raw": "{\r\n  \"lot_number\": 123856,\r\n  \"qty\": 100,\r\n  \"start_date\": \"2024-11-01T00:00:00Z\",\r\n  \"is_loan\": false,\r\n  \"category\": \"5f8d0d55b5e8f1a3b2f3f3d3\",\r\n  \"customer\":\"6764993f5a6502d1047008dd\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -121,6 +121,14 @@
 						"url": "http://localhost:7200/api/v1/inventry/675e9937a1e06c1dacc5f238"
 					},
 					"response": []
+				},
+				{
+					"name": "byCustomerId",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			]
 		},
@@ -141,7 +149,7 @@
 							"mode": "raw",
 							"raw": "{\"name\": \"Electronics\", \"desc\": \"Category for all electronic products.\", \"amount\": 500, \"no_of_days\": 30, \"active\": true}"
 						},
-						"url": "http://localhost/7200/api/v1/category/add"
+						"url": "http://localhost:7200/api/v1/category/add"
 					},
 					"response": []
 				},
@@ -169,7 +177,7 @@
 								"value": "application/json"
 							}
 						],
-						"url": "http://localhost:7200/api/v1/category/675ee356ed3c360bd2dcfee2"
+						"url": "http://localhost:7200/api/v1/category/6761e17a71f2bbe4582269ce"
 					},
 					"response": []
 				},
@@ -217,6 +225,262 @@
 							"variable": [
 								{
 									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Loan",
+			"item": [
+				{
+					"name": "Add Loan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"duration_in_month\": 12, \"status\": \"active\", \"interest_percentage\": 5, \"amount\": 10000, \"inventry\": \"6761e3e7f88eafe26f8d3a7e\", \"customer\": \"6764993f5a6502d1047008dd\", \"active\": true}"
+						},
+						"url": "http://localhost:7200/api/v1/loan/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Loans",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:7200/api/v1/loan/list"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Loan by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:7200/api/v1/loan/6764a19adadbc6694e6dae04"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Loan by ID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"status\": \"approved\", \"amount\": 12000, \"active\": true}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/loan/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"loan",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Loan by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/loan/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"loan",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "inventory_transaction",
+			"item": [
+				{
+					"name": "Add Transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"store\",\n  \"status\": \"success\",\n  \"qty\": 100,\n  \"inventry\": \"6761e3e7f88eafe26f8d3a7e\",\n  \"customer\": \"6764993f5a6502d1047008dd\",\n  \"active\": true\n}"
+						},
+						"url": "http://localhost:7200/api/v1/transaction/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/transaction/list"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/transaction/6764ab7f825f802cf7151cfc"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Transaction",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"completed\",\n  \"qty\": 200,\n  \"active\": false\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/ransaction/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ransaction",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Transaction",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transaction/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transaction",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transactions by Inventory ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/transaction/inventory/6761e3e7f88eafe26f8d3a7e"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transactions by Customer ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/transaction/customer/6764993f5a6502d1047008dd"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transactions by Customer and Inventory ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transaction/customer-inventory/:customerId/:inventoryId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transaction",
+								"customer-inventory",
+								":customerId",
+								":inventoryId"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": ""
+								},
+								{
+									"key": "inventoryId",
+									"value": ""
 								}
 							]
 						}
