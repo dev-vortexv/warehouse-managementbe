@@ -52,7 +52,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"firstName\": \"Alok\",\r\n  \"lastName\": \"Chaturvedi\",\r\n  \"phoneNo\": \"9876543210\",\r\n  \"email\": \"johnny.doe@example.com\",\r\n  \"aadharNo\": \"123456789012\",\r\n  \"country\": \"India\",\r\n  \"address\": \"456, Park Avenue, Delhi\"\r\n}\r\n",
+              "raw": "{\r\n  \"firstName\": \"Alok\",\r\n  \"lastName\": \"Chaturvedi\",\r\n  \"phoneNo\": \"9876543210\",\r\n  \"email\": \"johnny.doe@example.com\",\r\n  \"IdentityNo\":\"78786655\",\r\n  \"IdentityType\":\"aadharNo\"\r\n  \"country\": \"India\",\r\n  \"address\": \"456, Park Avenue, Delhi\"\r\n}\r\n",
               "options": {
                 "raw": {
                   "language": "json"

@@ -1,6 +1,7 @@
 import { Customer } from "../models/customer.js";
 import { errorCodes, Message, statusCodes } from "../core/common/constant.js";
 import CustomError from "../utils/exception.js";
+import { generateUniqueCode } from "../helper/common.js";
 
 export const addCustomer = async (req) => {
   const {
@@ -18,11 +19,14 @@ export const addCustomer = async (req) => {
     throw new CustomError(
       statusCodes?.conflict,
       Message?.alreadyExist,
-      errorCodes?.already_exist,
+      errorCodes?.already_exist
     );
   }
 
+  const customerCode = await generateUniqueCode("CUST");
+
   const customer = new Customer({
+    customerCode,
     firstName,
     lastName,
     phoneNo,
@@ -47,7 +51,7 @@ export const getCustomerById = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found,
+      errorCodes?.not_found
     );
   }
   return customer;
@@ -63,7 +67,7 @@ export const updateCustomer = async (id, updateData) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found,
+      errorCodes?.not_found
     );
   }
 
@@ -76,7 +80,7 @@ export const deleteCustomer = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found,
+      errorCodes?.not_found
     );
   }
 

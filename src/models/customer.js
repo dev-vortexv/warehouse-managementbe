@@ -2,6 +2,11 @@ import mongoose, { Schema } from "mongoose";
 
 const customerSchema = new Schema(
   {
+    customerCode: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     firstName: {
       type: String,
       required: true,
@@ -46,7 +51,7 @@ const customerSchema = new Schema(
       default: true,
     },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 export const Customer = mongoose.model("customer", customerSchema);
