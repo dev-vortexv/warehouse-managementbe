@@ -75,7 +75,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"lot_number\": 123856,\r\n  \"qty\": 100,\r\n  \"start_date\": \"2024-11-01T00:00:00Z\",\r\n  \"is_loan\": false,\r\n  \"category\": \"5f8d0d55b5e8f1a3b2f3f3d3\",\r\n  \"customer\":\"6764993f5a6502d1047008dd\"\r\n}\r\n",
+              "raw": "{\r\n  \"lot_number\": 123856,\r\n  \"qty\": 100,\r\n  \"start_date\": \"2024-11-01T00:00:00Z\",\r\n  \"is_loan\": false,\r\n  \"rate\": \"10\",\r\n  \"rate_category\": \"MONTH\",\r\n   \"inventory_name\": \"Rise\",\r\n   \"inventory_desc\": \"Basmati\",\r\n  \"customer\":\"6764993f5a6502d1047008dd\"\r\n}\r\n",
               "options": {
                 "raw": {
                   "language": "json"
@@ -241,7 +241,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"duration_in_month\": 12, \"status\": \"active\", \"interest_percentage\": 5, \"amount\": 10000, \"inventry\": \"6761e3e7f88eafe26f8d3a7e\", \"customer\": \"6764993f5a6502d1047008dd\", \"active\": true}"
+              "raw": "{\"duration_in_month\": 12, \"status\": \"active\", \"interest_percentage\": 5, \"amount\": 10000, \"inventry\": \"6761e3e7f88eafe26f8d3a7e\", \"customer\": \"6764993f5a6502d1047008dd\", \"start_date\": \"2024-11-01T00:00:00Z\",}"
             },
             "url": "http://localhost:7200/api/v1/loan/add"
           },

@@ -4,18 +4,22 @@ const loanSchema = new Schema(
   {
     duration_in_month: {
       type: Number,
+      required: false,
+    },
+    start_date: {
+      type: Date,
       required: true,
     },
     status: {
       type: String,
     },
     interest_percentage: {
-      type: Date,
+      type: Number,
       required: true,
     },
     amount: {
       type: Number,
-      default: false,
+      required: true,
     },
     inventry: {
       type: mongoose.Types.ObjectId,

@@ -25,24 +25,33 @@ const inventrySchema = new Schema(
       type: Boolean,
       default: false,
     },
-    category: {
-      type: mongoose.Types.ObjectId,
-      required: true,
-      ref: "category",
-    },
+    // category: {
+    //   type: mongoose.Types.ObjectId,
+    //   required: true,
+    //   ref: "category",
+    // },
     customer: {
       type: mongoose.Types.ObjectId,
       required: true,
       ref: "customer",
     },
+    rate: {
+      type: Number,
+      required: true,
+    },
+    rate_category: {
+      required: true,
+      type: String,
+      enum: ["MONTH", "DAY", "YEAR"],
+    },
     discount: {
       type: Number,
       default: 0,
     },
-    product_name: {
+    inventory_name: {
       type: String,
     },
-    product_desc: {
+    inventory_desc: {
       type: String,
       default: null,
     },
@@ -51,7 +60,7 @@ const inventrySchema = new Schema(
       default: true,
     },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 export const Inventry = mongoose.model("inventry", inventrySchema);

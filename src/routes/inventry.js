@@ -8,16 +8,16 @@ inventoryRoutes.get("/list", asyncHandler(inventoryController.getAllInventory));
 inventoryRoutes.get("/:id", asyncHandler(inventoryController.getInventoryById));
 inventoryRoutes.get(
   "/bycustomer/:id",
-  asyncHandler(inventoryController.getInventoryByCustomerId),
+  asyncHandler(inventoryController.getInventoryByCustomerId)
 );
 inventoryRoutes.get(
   "/customer/inventry-details",
-  asyncHandler(inventoryController.getInventoryAndCustomerDetails),
+  asyncHandler(inventoryController.getInventoryAndCustomerDetails)
 );
 inventoryRoutes.put("/:id", asyncHandler(inventoryController.updateInventory));
 inventoryRoutes.delete(
   "/:id",
-  asyncHandler(inventoryController.deleteInventory),
+  asyncHandler(inventoryController.deleteInventory)
 );
 
 export default inventoryRoutes;

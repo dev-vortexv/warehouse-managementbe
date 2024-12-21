@@ -10,29 +10,32 @@ export const addInventory = async (req) => {
     qty,
     start_date,
     is_loan,
-    category,
+    rate,
+    rate_category,
     customer,
-    product_name,
-    product_desc,
+    inventory_name,
+    inventory_desc,
   } = req.body;
   const isInventoryExist = await Inventry.findOne({ lot_number });
   if (isInventoryExist) {
     throw new CustomError(
       statusCodes?.conflict,
       Message?.lot_alrready_exist,
-      errorCodes?.lot_alrready_exist,
+      errorCodes?.lot_alrready_exist
     );
   }
+  let date = start_date ?? new Date();
 
   const inventory = new Inventry({
     lot_number,
     qty,
-    start_date,
+    start_date: date,
     is_loan,
-    category,
+    rate,
+    rate_category,
     customer,
-    product_name,
-    product_desc,
+    inventory_name,
+    inventory_desc,
   });
 
   const inventoryData = await inventory.save();
@@ -73,7 +76,7 @@ export const updateInventory = async (id, updateData) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found,
+      errorCodes?.not_found
     );
   }
 
@@ -86,7 +89,7 @@ export const deleteInventory = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found,
+      errorCodes?.not_found
     );
   }
 

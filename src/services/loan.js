@@ -5,21 +5,22 @@ import CustomError from "../utils/exception.js";
 export const addLoan = async (req) => {
   const {
     duration_in_month,
+    start_date,
     status,
     interest_percentage,
     amount,
     inventry,
     customer,
-    active,
   } = req.body;
+  let date = start_date ? start_date : new Date();
   const loan = new Loan({
     duration_in_month,
+    start_date: date,
     status,
     interest_percentage,
     amount,
     inventry,
     customer,
-    active,
   });
   const loanData = await loan.save();
   return loanData;
@@ -40,7 +41,7 @@ export const getLoanById = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found,
+      errorCodes?.not_found
     );
   }
   return loan;
@@ -56,7 +57,7 @@ export const updateLoan = async (id, updateData) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found,
+      errorCodes?.not_found
     );
   }
 
@@ -69,7 +70,7 @@ export const deleteLoan = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found,
+      errorCodes?.not_found
     );
   }
 
