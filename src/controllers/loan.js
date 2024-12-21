@@ -24,7 +24,21 @@ const updateLoan = async (req, res, next) => {
   const updatedLoan = await loanService.updateLoan(
     req.params.id,
     req.body,
-    next,
+    next
+  );
+  if (!updatedLoan) {
+    throw new CustomError(Message?.notFound, statusCodes?.notFound);
+  }
+  res
+    .status(statusCodes?.ok)
+    .send({ message: Message?.updateSuccess, updatedLoan });
+};
+
+const markLoanAsCompleted = async (req, res, next) => {
+  const updatedLoan = await loanService.markLoanAsCompleted(
+    req.params.id,
+    req.body,
+    next
   );
   if (!updatedLoan) {
     throw new CustomError(Message?.notFound, statusCodes?.notFound);
@@ -48,4 +62,5 @@ export default {
   getLoanById,
   updateLoan,
   deleteLoan,
+  markLoanAsCompleted,
 };

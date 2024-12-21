@@ -10,6 +10,9 @@ const loanSchema = new Schema(
       type: Date,
       required: true,
     },
+    end_date: {
+      type: Date,
+    },
     status: {
       type: String,
     },

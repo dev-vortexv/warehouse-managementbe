@@ -47,11 +47,34 @@ export const getLoanById = async (id) => {
   return loan;
 };
 
-export const updateLoan = async (id, updateData) => {
+export const updateLoan = async (id) => {
   const updatedLoan = await Loan.findByIdAndUpdate(id, updateData, {
     new: true,
     runValidators: true,
   });
+
+  if (!updatedLoan) {
+    throw new CustomError(
+      statusCodes?.notFound,
+      Message?.notFound,
+      errorCodes?.not_found
+    );
+  }
+
+  return updatedLoan;
+};
+
+export const markLoanAsCompleted = async (id) => {
+  let status = "Completed";
+  let end_date = new Date();
+  const updatedLoan = await Loan.findByIdAndUpdate(
+    id,
+    { end_date, status },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
 
   if (!updatedLoan) {
     throw new CustomError(

@@ -15,7 +15,7 @@ const inventrySchema = new Schema(
     remaining_qty: {
       type: Number,
       trim: true,
-      default: null,
+      default: 0,
     },
     start_date: {
       type: Date,
