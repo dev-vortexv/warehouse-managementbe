@@ -23,6 +23,7 @@ export const addLoan = async (req) => {
     amount,
     inventry,
     customer,
+    loanCode
   });
   const loanData = await loan.save();
   return loanData;

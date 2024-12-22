@@ -5,7 +5,7 @@ const loanSchema = new Schema(
     loanCode: {
       required: true,
       type: String,
-      unique: true,
+      // unique: true,
     },
     duration_in_month: {
       type: Number,
