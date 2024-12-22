@@ -26,12 +26,24 @@ app.use((req, res, next) => {
 });
 
 const insertCodeData = async () => {
-  const existingRecord = await Code.findOne({ code: "CUST" });
+  const existingCustomerRecord = await Code.findOne({ code: "CUST" });
 
-  if (!existingRecord) {
+  if (!existingCustomerRecord) {
     const codeRecord = new Code({
       name: "Customer",
       code: "CUST",
+      number: 1,
+    });
+
+    await codeRecord.save();
+  }
+
+  const existingLoandRecord = await Code.findOne({ code: "LOAN" });
+
+  if (!existingLoandRecord) {
+    const codeRecord = new Code({
+      name: "Loan",
+      code: "LOAN",
       number: 1,
     });
 
