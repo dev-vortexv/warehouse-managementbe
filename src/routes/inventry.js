@@ -19,5 +19,9 @@ inventoryRoutes.delete(
   "/:id",
   asyncHandler(inventoryController.deleteInventory)
 );
+inventoryRoutes.get(
+  "/invoice/:id",
+  asyncHandler(inventoryController.generateInvoice)
+);
 
 export default inventoryRoutes;

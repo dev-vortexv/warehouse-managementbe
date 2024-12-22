@@ -3,6 +3,7 @@ import CustomError from "../utils/exception.js";
 import { Inventry } from "../models/inventry.js";
 import mongoose from "mongoose";
 import { Customer } from "../models/customer.js";
+import { generateInvoicePDF } from "../helper/pdfMaker.js";
 
 export const addInventory = async (req) => {
   const {
@@ -94,4 +95,20 @@ export const deleteInventory = async (id) => {
   }
 
   return { message: Message?.deleteSuccess };
+};
+
+export const generateInvoice = async (id) => {
+  const inventory = await Inventry.findById(id)
+    .select("-__v")
+    .populate(["customer"]);
+  if (!loan) {
+    throw new CustomError(
+      statusCodes?.notFound,
+      Message?.notFound,
+      errorCodes?.not_found
+    );
+  }
+
+  const invoicePath = await generateInvoicePDF(inventory);
+  return loan;
 };

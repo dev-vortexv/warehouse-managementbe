@@ -23,7 +23,7 @@ const getInventoryById = async (req, res, next) => {
 const updateInventory = async (req, res, next) => {
   const updatedInventory = await inventoryService.updateInventory(
     req.params.id,
-    req.body,
+    req.body
   );
   if (!updatedInventory) {
     throw new CustomError(Message?.notFound, statusCodes?.notFound);
@@ -35,7 +35,7 @@ const updateInventory = async (req, res, next) => {
 
 const deleteInventory = async (req, res, next) => {
   const deletedInventory = await inventoryService.deleteInventory(
-    req.params.id,
+    req.params.id
   );
   if (!deletedInventory) {
     throw new CustomError(Message?.notFound, statusCodes?.notFound);
@@ -45,12 +45,20 @@ const deleteInventory = async (req, res, next) => {
 
 const getInventoryByCustomerId = async (req, res, next) => {
   const inventory = await inventoryService.getInventoryCustomerById(
-    req?.params?.id,
+    req?.params?.id
   );
   if (!inventory) {
     throw new CustomError(Message?.notFound, statusCodes?.notFound);
   }
   res.status(statusCodes?.ok).send(inventory);
+};
+
+const generateInvoice = async (req, res, next) => {
+  const loan = await inventoryService.generateInvoice(req.params.id, next);
+  if (!loan) {
+    throw new CustomError(Message?.notFound, statusCodes?.notFound);
+  }
+  res.status(statusCodes?.ok).send(loan);
 };
 
 export default {
@@ -60,4 +68,5 @@ export default {
   updateInventory,
   deleteInventory,
   getInventoryByCustomerId,
+  generateInvoice,
 };

@@ -16,8 +16,34 @@ const getPaymentReport = async (req, res, next) => {
   res.status(statusCodes?.ok).send(loans);
 };
 
+const getInventoryReportByDate = async (req, res, next) => {
+  const start_date = req.params.start_date;
+  const end_date = req.params.end_date;
+
+  const loans = await reportService.getInventoryReportByDate(
+    start_date,
+    end_date,
+    next
+  );
+  res.status(statusCodes?.ok).send(loans);
+};
+
+const getLoanReportByDate = async (req, res, next) => {
+  const start_date = req.params.start_date;
+  const end_date = req.params.end_date;
+
+  const loans = await reportService.generateLoanReportByDate(
+    start_date,
+    end_date,
+    next
+  );
+  res.status(statusCodes?.ok).send(loans);
+};
+
 export default {
   getPaymentReport,
   getLoanReport,
   getInventoryReport,
+  getInventoryReportByDate,
+  getLoanReportByDate,
 };

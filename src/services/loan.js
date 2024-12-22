@@ -1,6 +1,8 @@
 import { Loan } from "../models/loan.js";
 import { errorCodes, Message, statusCodes } from "../core/common/constant.js";
 import CustomError from "../utils/exception.js";
+import { generateInvoicePDF } from "../helper/pdfMaker.js";
+import { generateUniqueCode } from "../helper/common.js";
 
 export const addLoan = async (req) => {
   const {
@@ -13,6 +15,7 @@ export const addLoan = async (req) => {
     customer,
   } = req.body;
   let date = start_date ? start_date : new Date();
+  let loanCode = await generateUniqueCode("LOAN");
   const loan = new Loan({
     duration_in_month,
     start_date: date,
@@ -96,6 +99,22 @@ export const deleteLoan = async (id) => {
       errorCodes?.not_found
     );
   }
-
   return { message: Message?.deleteSuccess };
+};
+
+export const generateInvoice = async (id) => {
+  console.log("hiiiiii");
+  const loan = await Loan.findById(id)
+    .select("-__v")
+    .populate(["customer", "inventry"]);
+  if (!loan) {
+    throw new CustomError(
+      statusCodes?.notFound,
+      Message?.notFound,
+      errorCodes?.not_found
+    );
+  }
+
+  const invoicePath = await generateInvoicePDF(loan);
+  return loan;
 };

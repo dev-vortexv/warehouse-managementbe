@@ -2,6 +2,11 @@ import mongoose, { Schema } from "mongoose";
 
 const loanSchema = new Schema(
   {
+    loanCode: {
+      required: true,
+      type: String,
+      unique: true,
+    },
     duration_in_month: {
       type: Number,
       required: false,

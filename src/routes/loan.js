@@ -13,5 +13,6 @@ loanRoutes.put(
   asyncHandler(loanController.markLoanAsCompleted)
 );
 loanRoutes.delete("/:id", asyncHandler(loanController.deleteLoan));
+loanRoutes.get("/invoice/:id", asyncHandler(loanController.generateInvoice));
 
 export default loanRoutes;

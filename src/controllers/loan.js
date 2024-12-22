@@ -56,6 +56,14 @@ const deleteLoan = async (req, res, next) => {
   res.status(statusCodes?.ok).send({ message: Message?.deleteSuccess });
 };
 
+const generateInvoice = async (req, res, next) => {
+  const loan = await loanService.generateInvoice(req.params.id, next);
+  if (!loan) {
+    throw new CustomError(Message?.notFound, statusCodes?.notFound);
+  }
+  res.status(statusCodes?.ok).send(loan);
+};
+
 export default {
   addLoan,
   getAllLoans,
@@ -63,4 +71,5 @@ export default {
   updateLoan,
   deleteLoan,
   markLoanAsCompleted,
+  generateInvoice,
 };
