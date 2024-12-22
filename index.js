@@ -5,9 +5,8 @@ import globalExceptionHandler from "./src/utils/globalException.js";
 import logger from "./src/core/config/logger.js";
 import "dotenv/config";
 import responseInterceptor from "./src/utils/responseInterceptor.js";
-
 import router from "./src/routes/routes.js";
-import { Code } from "./src/models/code.js";
+import { insertCodeData } from "./src/helper/common.js";
 
 const app = express();
 const PORT = (() => {
@@ -25,36 +24,11 @@ app.use((req, res, next) => {
   next();
 });
 
-const insertCodeData = async () => {
-  const existingCustomerRecord = await Code.findOne({ code: "CUST" });
-
-  if (!existingCustomerRecord) {
-    const codeRecord = new Code({
-      name: "Customer",
-      code: "CUST",
-      number: 1,
-    });
-
-    await codeRecord.save();
-  }
-
-  const existingLoandRecord = await Code.findOne({ code: "LOAN" });
-
-  if (!existingLoandRecord) {
-    const codeRecord = new Code({
-      name: "Loan",
-      code: "LOAN",
-      number: 1,
-    });
-
-    await codeRecord.save();
-  }
-};
-
 connectDB()
   .then(() => {
     logger.info("Database connected successfully");
     insertCodeData();
+    logger.info("Inserted Code Data SuccessFully");
   })
   .catch((err) => {
     logger.error(`Database connection failed: ${err.message}`);
