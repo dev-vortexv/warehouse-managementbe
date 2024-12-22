@@ -25,7 +25,7 @@ const updatePayment = async (req, res, next) => {
   const updatedPayment = await paymentService.updatePayment(
     req.params.id,
     req.body,
-    next
+    next,
   );
   if (!updatedPayment) {
     throw new CustomError(Message?.notFound, statusCodes?.notFound);
@@ -38,7 +38,7 @@ const updatePayment = async (req, res, next) => {
 const deletePayment = async (req, res, next) => {
   const deletedPayment = await paymentService.deletePayment(
     req.params.id,
-    next
+    next,
   );
   if (!deletedPayment) {
     throw new CustomError(Message?.notFound, statusCodes?.notFound);
@@ -53,7 +53,7 @@ const getPaymentsByCustomerId = async (req, res, next) => {
     throw new CustomError(
       statusCodes?.notFound,
       "Payments not found for this customer.",
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
   res.status(statusCodes?.ok).send(payments);
@@ -66,7 +66,7 @@ const getPaymentsByInventoryId = async (req, res, next) => {
     throw new CustomError(
       statusCodes?.notFound,
       "Payments not found for this inventory.",
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
   res.status(statusCodes?.ok).send(payments);

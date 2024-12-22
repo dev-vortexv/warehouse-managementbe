@@ -23,7 +23,7 @@ export const addTransaction = async (req) => {
     await Inventry.findOneAndUpdate(
       { _id: inventry },
       { $inc: { remaining_qty: 10 } },
-      { new: true }
+      { new: true },
     );
   }
   return transactionData;
@@ -44,7 +44,7 @@ export const getTransactionById = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
   return transaction;
@@ -57,7 +57,7 @@ export const updateTransaction = async (id, updateData) => {
     {
       new: true,
       runValidators: true,
-    }
+    },
   )
     .populate("inventry customer")
     .select("-__v");
@@ -66,7 +66,7 @@ export const updateTransaction = async (id, updateData) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
 
@@ -79,7 +79,7 @@ export const deleteTransaction = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
 
@@ -96,7 +96,7 @@ export const getTransactionsByInventory = async (inventoryId) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
   return transactions;
@@ -110,7 +110,7 @@ export const getTransactionsByCustomer = async (customerId) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
   return transactions;
@@ -118,7 +118,7 @@ export const getTransactionsByCustomer = async (customerId) => {
 
 export const getTransactionsByCustomerAndInventory = async (
   customerId,
-  inventoryId
+  inventoryId,
 ) => {
   const transactions = await Transaction.find({
     customer: customerId,
@@ -130,7 +130,7 @@ export const getTransactionsByCustomerAndInventory = async (
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
   return transactions;

@@ -22,6 +22,7 @@
     "mongoose": "^8.8.4",
     "pdfkit": "^0.15.2",
     "pdfmake": "^0.2.16",
+    "puppeteer": "^23.11.1",
     "stack-trace": "^1.0.0-pre2",
     "winston": "^3.17.0",
     "winston-daily-rotate-file": "^5.0.0"

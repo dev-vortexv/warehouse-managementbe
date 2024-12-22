@@ -16,7 +16,7 @@ const codeSchema = new Schema(
       unique: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const Code = mongoose.model("Code", codeSchema);

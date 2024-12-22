@@ -24,7 +24,7 @@ const updateLoan = async (req, res, next) => {
   const updatedLoan = await loanService.updateLoan(
     req.params.id,
     req.body,
-    next
+    next,
   );
   if (!updatedLoan) {
     throw new CustomError(Message?.notFound, statusCodes?.notFound);
@@ -38,7 +38,7 @@ const markLoanAsCompleted = async (req, res, next) => {
   const updatedLoan = await loanService.markLoanAsCompleted(
     req.params.id,
     req.body,
-    next
+    next,
   );
   if (!updatedLoan) {
     throw new CustomError(Message?.notFound, statusCodes?.notFound);
@@ -57,7 +57,7 @@ const deleteLoan = async (req, res, next) => {
 };
 
 const generateInvoice = async (req, res, next) => {
-  const loan = await loanService.generateInvoice(req.params.id, next);
+  const loan = await loanService.generateInvoice(req.params.id, req, next);
   if (!loan) {
     throw new CustomError(Message?.notFound, statusCodes?.notFound);
   }

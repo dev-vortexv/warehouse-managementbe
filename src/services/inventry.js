@@ -3,9 +3,9 @@ import CustomError from "../utils/exception.js";
 import { Inventry } from "../models/inventry.js";
 import mongoose from "mongoose";
 import { Customer } from "../models/customer.js";
-import { generateInvoicePDF } from "../helper/pdfMaker.js";
+import { generateInventryInvoicePDF } from "../helper/pdfMaker.js";
 
-export const addInventory = async (req) => {
+export const addInventory = async (req, res) => {
   const {
     lot_number,
     qty,
@@ -22,7 +22,7 @@ export const addInventory = async (req) => {
     throw new CustomError(
       statusCodes?.conflict,
       Message?.lot_alrready_exist,
-      errorCodes?.lot_alrready_exist
+      errorCodes?.lot_alrready_exist,
     );
   }
   let date = start_date ?? new Date();
@@ -77,7 +77,7 @@ export const updateInventory = async (id, updateData) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
 
@@ -90,25 +90,25 @@ export const deleteInventory = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
 
   return { message: Message?.deleteSuccess };
 };
 
-export const generateInvoice = async (id) => {
+export const generateInvoice = async (id, res, next) => {
   const inventory = await Inventry.findById(id)
     .select("-__v")
     .populate(["customer"]);
-  if (!loan) {
+  if (!inventory) {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
 
-  const invoicePath = await generateInvoicePDF(inventory);
-  return loan;
+  const invoicePath = await generateInventryInvoicePDF(inventory, res);
+  return invoicePath;
 };

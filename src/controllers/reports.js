@@ -23,7 +23,7 @@ const getInventoryReportByDate = async (req, res, next) => {
   const loans = await reportService.getInventoryReportByDate(
     start_date,
     end_date,
-    next
+    next,
   );
   res.status(statusCodes?.ok).send(loans);
 };
@@ -35,7 +35,7 @@ const getLoanReportByDate = async (req, res, next) => {
   const loans = await reportService.generateLoanReportByDate(
     start_date,
     end_date,
-    next
+    next,
   );
   res.status(statusCodes?.ok).send(loans);
 };

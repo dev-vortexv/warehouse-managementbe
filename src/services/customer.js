@@ -19,7 +19,7 @@ export const addCustomer = async (req) => {
     throw new CustomError(
       statusCodes?.conflict,
       Message?.alreadyExist,
-      errorCodes?.already_exist
+      errorCodes?.already_exist,
     );
   }
 
@@ -51,7 +51,7 @@ export const getCustomerById = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
   return customer;
@@ -67,7 +67,7 @@ export const updateCustomer = async (id, updateData) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
 
@@ -80,7 +80,7 @@ export const deleteCustomer = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
 

@@ -10,7 +10,7 @@ loanRoutes.get("/:id", asyncHandler(loanController.getLoanById));
 loanRoutes.put("/:id", asyncHandler(loanController.updateLoan));
 loanRoutes.put(
   "/:id/complete",
-  asyncHandler(loanController.markLoanAsCompleted)
+  asyncHandler(loanController.markLoanAsCompleted),
 );
 loanRoutes.delete("/:id", asyncHandler(loanController.deleteLoan));
 loanRoutes.get("/invoice/:id", asyncHandler(loanController.generateInvoice));

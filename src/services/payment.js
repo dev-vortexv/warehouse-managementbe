@@ -17,7 +17,7 @@ export const addPayment = async (req) => {
       throw new CustomError(
         statusCodes?.badRequest,
         "Inventory not found",
-        errorCodes?.not_found
+        errorCodes?.not_found,
       );
     }
   } else if (type === "loan") {
@@ -26,7 +26,7 @@ export const addPayment = async (req) => {
       throw new CustomError(
         statusCodes?.badRequest,
         "Loan not found",
-        errorCodes?.not_found
+        errorCodes?.not_found,
       );
     }
   }
@@ -90,7 +90,7 @@ export const getPaymentById = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
   return payment;
@@ -106,7 +106,7 @@ export const updatePayment = async (id, updateData) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
 
@@ -119,7 +119,7 @@ export const deletePayment = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
 
@@ -134,7 +134,7 @@ export const getPaymentsByCustomerId = async (customerId) => {
     throw new CustomError(
       statusCodes?.notFound,
       "Payments not found for this customer.",
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
   return payments;
@@ -146,7 +146,7 @@ export const getPaymentsByInventoryId = async (inventoryId) => {
     throw new CustomError(
       statusCodes?.notFound,
       "Payments not found for this inventory.",
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
   return payments;

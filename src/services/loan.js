@@ -1,7 +1,6 @@
 import { Loan } from "../models/loan.js";
 import { errorCodes, Message, statusCodes } from "../core/common/constant.js";
 import CustomError from "../utils/exception.js";
-import { generateInvoicePDF } from "../helper/pdfMaker.js";
 import { generateUniqueCode } from "../helper/common.js";
 
 export const addLoan = async (req) => {
@@ -44,7 +43,7 @@ export const getLoanById = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
   return loan;
@@ -60,7 +59,7 @@ export const updateLoan = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
 
@@ -76,14 +75,14 @@ export const markLoanAsCompleted = async (id) => {
     {
       new: true,
       runValidators: true,
-    }
+    },
   );
 
   if (!updatedLoan) {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
 
@@ -96,14 +95,13 @@ export const deleteLoan = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
   return { message: Message?.deleteSuccess };
 };
 
 export const generateInvoice = async (id) => {
-  console.log("hiiiiii");
   const loan = await Loan.findById(id)
     .select("-__v")
     .populate(["customer", "inventry"]);
@@ -111,10 +109,10 @@ export const generateInvoice = async (id) => {
     throw new CustomError(
       statusCodes?.notFound,
       Message?.notFound,
-      errorCodes?.not_found
+      errorCodes?.not_found,
     );
   }
-
-  const invoicePath = await generateInvoicePDF(loan);
+  return true;
+  //   const invoicePath = await generateInvoicePDF(loan);
   return loan;
 };

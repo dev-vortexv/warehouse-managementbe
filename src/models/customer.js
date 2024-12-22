@@ -51,7 +51,7 @@ const customerSchema = new Schema(
       default: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const Customer = mongoose.model("customer", customerSchema);

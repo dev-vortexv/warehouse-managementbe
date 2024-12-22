@@ -12,11 +12,11 @@ paymentRoutes.delete("/:id", asyncHandler(paymentController.deletePayment));
 
 paymentRoutes.get(
   "/customer/:customerId",
-  asyncHandler(paymentController.getPaymentsByCustomerId)
+  asyncHandler(paymentController.getPaymentsByCustomerId),
 );
 paymentRoutes.get(
   "/inventory/:inventoryId",
-  asyncHandler(paymentController.getPaymentsByInventoryId)
+  asyncHandler(paymentController.getPaymentsByInventoryId),
 );
 
 export default paymentRoutes;

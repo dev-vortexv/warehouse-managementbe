@@ -9,7 +9,7 @@ export const generateUniqueCode = async (code) => {
     await Code.findOneAndUpdate(
       { code },
       { $inc: { number: 1 } },
-      { new: true }
+      { new: true },
     );
 
     return uniqueCode;

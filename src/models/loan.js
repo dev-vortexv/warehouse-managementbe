@@ -44,7 +44,7 @@ const loanSchema = new Schema(
       default: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const Loan = mongoose.model("loan", loanSchema);

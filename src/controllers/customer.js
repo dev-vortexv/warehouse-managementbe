@@ -25,7 +25,7 @@ const updateCustomer = async (req, res, next) => {
   const updatedCustomer = await customerService.updateCustomer(
     req.params.id,
     req.body,
-    next
+    next,
   );
   if (!updatedCustomer) {
     throw new CustomError(Message?.notFound, statusCodes?.notFound);
@@ -38,7 +38,7 @@ const updateCustomer = async (req, res, next) => {
 const deleteCustomer = async (req, res, next) => {
   const deletedCustomer = await customerService.deleteCustomer(
     req.params.id,
-    next
+    next,
   );
   if (!deletedCustomer) {
     throw new CustomError(Message?.notFound, statusCodes?.notFound);
@@ -48,7 +48,7 @@ const deleteCustomer = async (req, res, next) => {
 
 const getInventoryAndCustomerDetails = async (req, res, next) => {
   const inventory = await customerService.getInventoryAndCustomerDetails(
-    req?.query
+    req?.query,
   );
   if (!inventory) {
     throw new CustomError(Message?.notFound, statusCodes?.notFound);

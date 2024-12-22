@@ -60,7 +60,7 @@ const inventrySchema = new Schema(
       default: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const Inventry = mongoose.model("inventry", inventrySchema);
