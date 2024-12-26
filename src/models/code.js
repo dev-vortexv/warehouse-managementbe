@@ -13,7 +13,7 @@ const codeSchema = new Schema(
     number: {
       type: Number,
       required: true,
-      unique: true,
+      // unique: true,
     },
   },
   { timestamps: true },

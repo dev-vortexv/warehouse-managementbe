@@ -46,7 +46,7 @@ export const addInventory = async (req, res) => {
 export const getAllInventory = async () => {
   const inventory = await Inventry.find()
     .select("-__v")
-    .populate(["customer", "category"]);
+    .populate(["customer"]); // category removed for temprory solution
   return inventory;
 };
 
