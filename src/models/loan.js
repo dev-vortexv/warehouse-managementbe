@@ -3,17 +3,13 @@ import mongoose, { Schema } from "mongoose";
 const loanSchema = new Schema(
   {
     loanCode: {
-      required: true,
       type: String,
-      // unique: true,
     },
-    duration_in_month: {
+    expected_duration_in_month: {
       type: Number,
-      required: false,
     },
     start_date: {
       type: Date,
-      required: true,
     },
     end_date: {
       type: Date,
@@ -38,6 +34,18 @@ const loanSchema = new Schema(
       type: mongoose.Types.ObjectId,
       required: true,
       ref: "customer",
+    },
+    applicable_bags: {
+      type: Number,
+    },
+    applicable_qty: {
+      type: Number
+    },
+    applicable_valuation: {
+      type: Number
+    },
+    applicable_percentage_on_valuation: {
+      type: Number
     },
     active: {
       type: Boolean,

@@ -4,12 +4,21 @@ const inventrySchema = new Schema(
   {
     lot_number: {
       type: Number,
-      required: true,
       trim: true,
     },
     qty: {
       type: Number,
       required: true,
+      trim: true,
+    },
+    driver_name: {
+      type: String,
+    },
+    vechile_no: {
+      type: String,
+    },
+    weight: {
+      type: Number,
       trim: true,
     },
     remaining_qty: {
@@ -25,11 +34,6 @@ const inventrySchema = new Schema(
       type: Boolean,
       default: false,
     },
-    // category: {
-    //   type: mongoose.Types.ObjectId,
-    //   required: true,
-    //   ref: "category",
-    // },
     customer: {
       type: mongoose.Types.ObjectId,
       required: true,
@@ -48,7 +52,7 @@ const inventrySchema = new Schema(
       type: Number,
       default: 0,
     },
-    inventory_name: {
+    product_name: {
       type: String,
     },
     inventory_desc: {
@@ -59,6 +63,18 @@ const inventrySchema = new Schema(
       type: Boolean,
       default: true,
     },
+    additional_expense: {
+      type: Number
+    },
+    package_weight: {
+      type: Number
+    },
+    loan_applicable_bags: {
+      type: Number
+    },
+    loan_applicable_qty: {
+      type: Number
+    }
   },
   { timestamps: true },
 );

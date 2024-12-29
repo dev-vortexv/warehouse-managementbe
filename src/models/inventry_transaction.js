@@ -15,6 +15,17 @@ const transactionSchema = new Schema(
       type: Number,
       required: true,
     },
+    weight: {
+      type: Number,
+    },
+    applicable_amount:{
+      type : Number ,
+      default : null
+    },
+    paid_amount:{
+      type : Number ,
+      default : null
+    },
     inventry: {
       type: mongoose.Types.ObjectId,
       required: true,
