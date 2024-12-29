@@ -16,17 +16,18 @@ export const addInventory = async (req, res) => {
     customer,
     inventory_name,
     inventory_desc,
+    driver_name,
+    vechile_no,
+    weight,
+    discount,
+    active,
+    additional_expense,
+    package_weight,
+    loan_applicable_bags,
+    loan_applicable_qty
+    
   } = req.body;
-  const isInventoryExist = await Inventry.findOne({ lot_number });
-  if (isInventoryExist) {
-    throw new CustomError(
-      statusCodes?.conflict,
-      Message?.lot_alrready_exist,
-      errorCodes?.lot_alrready_exist,
-    );
-  }
   let date = start_date ?? new Date();
-
   const inventory = new Inventry({
     lot_number,
     qty,
@@ -35,9 +36,19 @@ export const addInventory = async (req, res) => {
     rate,
     rate_category,
     customer,
-    inventory_name,
+    product_name: inventory_name,
+    remaining_qty:qty,
     inventory_desc,
-  });
+    driver_name,
+    vechile_no,
+    weight,
+    discount,
+    active,
+    additional_expense,
+    package_weight,
+    loan_applicable_bags,
+    loan_applicable_qty
+    });
 
   const inventoryData = await inventory.save();
   return inventoryData;

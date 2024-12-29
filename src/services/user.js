@@ -4,11 +4,7 @@ import CustomError from "../utils/exception.js";
 
 export const registerUser = async (req) => {
   const { firstname, lastname, company, email, password } = req.body;
-
-  // TODO: Validation
-
   const isUserAlreadyExist = await User.findOne({ email });
-
   if (isUserAlreadyExist) {
     throw new CustomError(
       statusCodes?.conflict,

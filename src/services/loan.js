@@ -12,6 +12,13 @@ export const addLoan = async (req) => {
     amount,
     inventry,
     customer,
+    expected_duration_in_month,
+    end_date,
+    applicable_bags,
+    applicable_qty,
+    applicable_valuation,
+    applicable_percentage_on_valuation,
+    active
   } = req.body;
   let date = start_date ? start_date : new Date();
   let loanCode = await generateUniqueCode("LOAN");
@@ -23,7 +30,14 @@ export const addLoan = async (req) => {
     amount,
     inventry,
     customer,
-    loanCode
+    loanCode,
+    expected_duration_in_month,
+    end_date,
+    applicable_bags,
+    applicable_qty,
+    applicable_valuation,
+    applicable_percentage_on_valuation,
+    active
   });
   const loanData = await loan.save();
   return loanData;

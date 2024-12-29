@@ -1,561 +1,607 @@
 {
-  "info": {
-    "_postman_id": "8c293544-9a0f-4f83-b569-a481cb3bc1f5",
-    "name": "WareHouse",
-    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-    "_exporter_id": "26159388"
-  },
-  "item": [
-    {
-      "name": "customer",
-      "item": [
-        {
-          "name": "add",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"firstName\": \"Johnny\",\r\n  \"lastName\": \"Doe\",\r\n  \"phoneNo\": \"9876863210\",\r\n  \"email\": \"johnnn7y.doe@example.com\",\r\n  \"country\": \"India\",\r\n  \"address\": \"456, Park Avenue, Delhi\",\r\n  \"IdentityNo\":\"78786655\",\r\n  \"IdentityType\":\"aadharNo\"\r\n\r\n\r\n}\r\n",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": "http://localhost:7200/api/v1/customer/add"
-          },
-          "response": []
-        },
-        {
-          "name": "findById",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://localhost:7200/api/v1/customer/6764993f5a6502d1047008dd"
-          },
-          "response": []
-        },
-        {
-          "name": "findall",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://localhost:7200/api/v1/customer/list"
-          },
-          "response": []
-        },
-        {
-          "name": "update",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"firstName\": \"Alok\",\r\n  \"lastName\": \"Chaturvedi\",\r\n  \"phoneNo\": \"9876543210\",\r\n  \"email\": \"johnny.doe@example.com\",\r\n  \"IdentityNo\":\"78786655\",\r\n  \"IdentityType\":\"aadharNo\"\r\n  \"country\": \"India\",\r\n  \"address\": \"456, Park Avenue, Delhi\"\r\n}\r\n",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": "http://localhost:7200/api/v1/customer/675dfa085d4a4fa1f6680d45"
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "inventry",
-      "item": [
-        {
-          "name": "add",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"lot_number\": 123856,\r\n  \"qty\": 100,\r\n  \"start_date\": \"2024-11-01T00:00:00Z\",\r\n  \"is_loan\": false,\r\n  \"rate\": \"10\",\r\n  \"rate_category\": \"MONTH\",\r\n   \"inventory_name\": \"Rise\",\r\n   \"inventory_desc\": \"Basmati\",\r\n  \"customer\":\"6764993f5a6502d1047008dd\"\r\n}\r\n",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": "http://localhost:7200/api/v1/inventry/add"
-          },
-          "response": []
-        },
-        {
-          "name": "list",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://localhost:7200/api/v1/inventry/list"
-          },
-          "response": []
-        },
-        {
-          "name": "byId",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://localhost:7200/api/v1/inventry/675e9937a1e06c1dacc5f238"
-          },
-          "response": []
-        },
-        {
-          "name": "udpate",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"lot_number\": 123456,\r\n  \"qty\": 100,\r\n  \"start_date\": \"2024-10-01T00:00:00Z\",\r\n  \"is_loan\": true,\r\n  \"category\": \"5f8d0d55b5e8f1a3b2f3f3d3\"\r\n}\r\n",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": "http://localhost:7200/api/v1/inventry/675e9937a1e06c1dacc5f238"
-          },
-          "response": []
-        },
-        {
-          "name": "byCustomerId",
-          "request": {
-            "method": "GET",
-            "header": []
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Category",
-      "item": [
-        {
-          "name": "Add Category",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"name\": \"Electronics\", \"desc\": \"Category for all electronic products.\", \"amount\": 500, \"no_of_days\": 30, \"active\": true}"
-            },
-            "url": "http://localhost:7200/api/v1/category/add"
-          },
-          "response": []
-        },
-        {
-          "name": "Get All Categories",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": "http://localhost:7200/api/v1/category/list"
-          },
-          "response": []
-        },
-        {
-          "name": "Get Category by ID",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": "http://localhost:7200/api/v1/category/6761e17a71f2bbe4582269ce"
-          },
-          "response": []
-        },
-        {
-          "name": "Update Category",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"name\": \"Yearly\", \"desc\": \"Updated description\", \"amount\": 6000, \"no_of_days\": 35, \"active\": true}"
-            },
-            "url": "http://localhost:7200/api/v1/category/675ee356ed3c360bd2dcfee2"
-          },
-          "response": []
-        },
-        {
-          "name": "Delete Category",
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "http://localhost.7200.api.v1/category/:id",
-              "protocol": "http",
-              "host": ["localhost", "7200", "api", "v1"],
-              "path": ["category", ":id"],
-              "variable": [
-                {
-                  "key": "id"
-                }
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Loan",
-      "item": [
-        {
-          "name": "Add Loan",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"duration_in_month\": 12, \"status\": \"active\", \"interest_percentage\": 5, \"amount\": 10000, \"inventry\": \"6761e3e7f88eafe26f8d3a7e\", \"customer\": \"6764993f5a6502d1047008dd\", \"start_date\": \"2024-11-01T00:00:00Z\",}"
-            },
-            "url": "http://localhost:7200/api/v1/loan/add"
-          },
-          "response": []
-        },
-        {
-          "name": "Get All Loans",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "url": "http://localhost:7200/api/v1/loan/list"
-          },
-          "response": []
-        },
-        {
-          "name": "Get Loan by ID",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "url": "http://localhost:7200/api/v1/loan/6764a19adadbc6694e6dae04"
-          },
-          "response": []
-        },
-        {
-          "name": "Update Loan by ID",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"status\": \"approved\", \"amount\": 12000, \"active\": true}"
-            },
-            "url": {
-              "raw": "http://localhost:5000/loan/:id",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["loan", ":id"],
-              "variable": [
-                {
-                  "key": "id"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete Loan by ID",
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "url": {
-              "raw": "http://localhost:5000/loan/:id",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["loan", ":id"],
-              "variable": [
-                {
-                  "key": "id"
-                }
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "inventory_transaction",
-      "item": [
-        {
-          "name": "Add Transaction",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"type\": \"store\",\n  \"status\": \"success\",\n  \"qty\": 100,\n  \"inventry\": \"6761e3e7f88eafe26f8d3a7e\",\n  \"customer\": \"6764993f5a6502d1047008dd\",\n  \"active\": true\n}"
-            },
-            "url": "http://localhost:7200/api/v1/transaction/add"
-          },
-          "response": []
-        },
-        {
-          "name": "Get All Transactions",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "{{base_url}}/transaction/list"
-          },
-          "response": []
-        },
-        {
-          "name": "Get Transaction by ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "{{base_url}}/transaction/6764ab7f825f802cf7151cfc"
-          },
-          "response": []
-        },
-        {
-          "name": "Update Transaction",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"status\": \"completed\",\n  \"qty\": 200,\n  \"active\": false\n}"
-            },
-            "url": {
-              "raw": "{{base_url}}/ransaction/:id",
-              "host": ["{{base_url}}"],
-              "path": ["ransaction", ":id"],
-              "variable": [
-                {
-                  "key": "id",
-                  "value": ""
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete Transaction",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/transaction/:id",
-              "host": ["{{base_url}}"],
-              "path": ["transaction", ":id"],
-              "variable": [
-                {
-                  "key": "id",
-                  "value": ""
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Transactions by Inventory ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "{{base_url}}/transaction/inventory/6761e3e7f88eafe26f8d3a7e"
-          },
-          "response": []
-        },
-        {
-          "name": "Get Transactions by Customer ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "{{base_url}}/transaction/customer/6764993f5a6502d1047008dd"
-          },
-          "response": []
-        },
-        {
-          "name": "Get Transactions by Customer and Inventory ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/transaction/customer-inventory/:customerId/:inventoryId",
-              "host": ["{{base_url}}"],
-              "path": [
-                "transaction",
-                "customer-inventory",
-                ":customerId",
-                ":inventoryId"
-              ],
-              "variable": [
-                {
-                  "key": "customerId",
-                  "value": ""
-                },
-                {
-                  "key": "inventoryId",
-                  "value": ""
-                }
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "payment",
-      "item": [
-        {
-          "name": "Add Payment",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"type\": \"inventry\",\n  \"status\": \"Paid\",\n  \"amount\": 1000,\n  \"inventry\": \"603d9b0d12f7a8b2d8b8c8a1\",\n  \"customer\": \"603d9b0d12f7a8b2d8b8c8a2\",\n  \"active\": true\n}"
-            },
-            "url": "http://localhost:7200/api/v1/payment/add"
-          },
-          "response": []
-        },
-        {
-          "name": "Get All Payments",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://localhost:7200/api/v1/payment/list"
-          },
-          "response": []
-        },
-        {
-          "name": "Get Payment by ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://localhost:7200/api/v1/payment/603d9b0d12f7a8b2d8b8c8a3"
-          },
-          "response": []
-        },
-        {
-          "name": "Update Payment",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"status\": \"Pending\",\n  \"amount\": 1200,\n  \"active\": false\n}"
-            },
-            "url": {
-              "raw": "http://localhost:7200/api/v1/payment/:id",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["payment", ":id"],
-              "variable": [
-                {
-                  "key": "id",
-                  "value": ""
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete Payment",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:7200/api/v1/payment/:id",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["payment", ":id"],
-              "variable": [
-                {
-                  "key": "id",
-                  "value": ""
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Payments by Customer ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://localhost:7200/api/v1/payment/customer/603d9b0d12f7a8b2d8b8c8a2"
-          },
-          "response": []
-        },
-        {
-          "name": "Get Payments by Inventory ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://localhost:7200/api/v1/payment/inventory/603d9b0d12f7a8b2d8b8c8a1"
-          },
-          "response": []
-        }
-      ]
-    }
-  ]
+	"info": {
+		"_postman_id": "1da91ea8-2823-44fe-9829-a82a25599ec1",
+		"name": "WareHouse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "26159388"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Johnny\",\r\n  \"lastName\": \"Doe\",\r\n  \"phoneNo\": \"9876853210\",\r\n  \"email\": \"johnnn7y.doue@example.com\",\r\n  \"country\": \"India\",\r\n  \"address\": \"456, Park Avenue, Delhi\",\r\n  \"IdentityNo\":\"78786665\",\r\n  \"IdentityType\":\"aadharNo\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7200/api/v1/customer/add"
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7200/api/v1/customer/6764993f5a6502d1047008dd"
+					},
+					"response": []
+				},
+				{
+					"name": "findall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7200/api/v1/customer/list"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Alok\",\r\n  \"lastName\": \"Chaturvedi\",\r\n  \"phoneNo\": \"9876543210\",\r\n  \"email\": \"johnny.doe@example.com\",\r\n  \"IdentityNo\":\"78786655\",\r\n  \"IdentityType\":\"aadharNo\"\r\n  \"country\": \"India\",\r\n  \"address\": \"456, Park Avenue, Delhi\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7200/api/v1/customer/675dfa085d4a4fa1f6680d45"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "inventry",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"lot_number\": null ,\r\n  \"qty\": 100,\r\n  \"start_date\": \"2024-01-02T00:00:00Z\",\r\n  \"is_loan\": false,\r\n  \"rate\": \"10\",\r\n  \"rate_category\": \"MONTH\",\r\n   \"inventory_name\": \"Rise\",\r\n   \"inventory_desc\": \"Basmati\",\r\n  \"customer\":\"67713c10b728eaabded920d6\",\r\n  \"driver_name\":\"mark\",\r\n  \"vechile_no\":\"Mp08Thf8998\",\r\n  \"weight\":3000,\r\n  \"discount\":0,\r\n  \"active\":true,\r\n  \"additional_expense\":0,\r\n  \"package_weight\":30\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7200/api/v1/inventry/add"
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7200/api/v1/inventry/list"
+					},
+					"response": []
+				},
+				{
+					"name": "byId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7200/api/v1/inventry/675e9937a1e06c1dacc5f238"
+					},
+					"response": []
+				},
+				{
+					"name": "udpate",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"lot_number\": 123456,\r\n  \"qty\": 100,\r\n  \"start_date\": \"2024-10-01T00:00:00Z\",\r\n  \"is_loan\": true,\r\n  \"category\": \"5f8d0d55b5e8f1a3b2f3f3d3\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7200/api/v1/inventry/675e9937a1e06c1dacc5f238"
+					},
+					"response": []
+				},
+				{
+					"name": "byCustomerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Add Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Electronics\", \"desc\": \"Category for all electronic products.\", \"amount\": 500, \"no_of_days\": 30, \"active\": true}"
+						},
+						"url": "http://localhost:7200/api/v1/category/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:7200/api/v1/category/list"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:7200/api/v1/category/6761e17a71f2bbe4582269ce"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Yearly\", \"desc\": \"Updated description\", \"amount\": 6000, \"no_of_days\": 35, \"active\": true}"
+						},
+						"url": "http://localhost:7200/api/v1/category/675ee356ed3c360bd2dcfee2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost.7200.api.v1/category/:id",
+							"protocol": "http",
+							"host": [
+								"localhost",
+								"7200",
+								"api",
+								"v1"
+							],
+							"path": [
+								"category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Loan",
+			"item": [
+				{
+					"name": "Add Loan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\": \"active\",\r\n  \"interest_percentage\": 1.2,\r\n  \"amount\": 100000,\r\n  \"inventry\": \"677140d5b5e71bc7e77172e4\",\r\n  \"customer\": \"67713c10b728eaabded920d6\",\r\n  \"start_date\": \"2024-11-01T00:00:00Z\",\r\n  \"expected_duration_in_month\": 2,\r\n  \"applicable_bags\": 30,\r\n  \"applicable_qty\": 30,\r\n  \"applicable_valuation\": 20,\r\n  \"applicable_percentage_on_valuation\": 20,\r\n  \"active\": true\r\n}\r\n"
+						},
+						"url": "http://localhost:7200/api/v1/loan/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Loans",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:7200/api/v1/loan/list"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Loan by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:7200/api/v1/loan/6764a19adadbc6694e6dae04"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Loan by ID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"status\": \"approved\", \"amount\": 12000, \"active\": true}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/loan/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"loan",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Loan by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/loan/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"loan",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "inventory_transaction",
+			"item": [
+				{
+					"name": "Add Transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"remove\",\n  \"status\": \"success\",\n  \"qty\": 20,\n  \"inventry\": \"677140d5b5e71bc7e77172e4\",\n  \"customer\": \"67713c10b728eaabded920d6\",\n  \"active\": true\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:7200/api/v1/transaction/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/transaction/list"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/transaction/6764ab7f825f802cf7151cfc"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Transaction",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"completed\",\n  \"qty\": 200,\n  \"active\": false\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/ransaction/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ransaction",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Transaction",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transaction/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transaction",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transactions by Inventory ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/transaction/inventory/6761e3e7f88eafe26f8d3a7e"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transactions by Customer ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/transaction/customer/6764993f5a6502d1047008dd"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transactions by Customer and Inventory ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transaction/customer-inventory/:customerId/:inventoryId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transaction",
+								"customer-inventory",
+								":customerId",
+								":inventoryId"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": ""
+								},
+								{
+									"key": "inventoryId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment",
+			"item": [
+				{
+					"name": "Add Payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"inventry\",\n  \"status\": \"Paid\",\n  \"amount\": 1000,\n  \"inventry\": \"603d9b0d12f7a8b2d8b8c8a1\",\n  \"customer\": \"603d9b0d12f7a8b2d8b8c8a2\",\n  \"active\": true\n}"
+						},
+						"url": "http://localhost:7200/api/v1/payment/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7200/api/v1/payment/list"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7200/api/v1/payment/603d9b0d12f7a8b2d8b8c8a3"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Payment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"Pending\",\n  \"amount\": 1200,\n  \"active\": false\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/payment/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"payment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Payment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/payment/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"payment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payments by Customer ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7200/api/v1/payment/customer/603d9b0d12f7a8b2d8b8c8a2"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payments by Inventory ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:7200/api/v1/payment/inventory/603d9b0d12f7a8b2d8b8c8a1"
+					},
+					"response": []
+				}
+			]
+		}
+	]
 }

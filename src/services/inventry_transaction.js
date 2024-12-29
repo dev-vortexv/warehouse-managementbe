@@ -4,10 +4,26 @@ import CustomError from "../utils/exception.js";
 import { Inventry } from "../models/inventry.js";
 
 export const addTransaction = async (req) => {
-  const { type, status, qty, inventry, customer, active } = req.body;
+  let { type, status, qty, inventry, customer, active, weight,
+    applicable_amount,
+    paid_amount } = req.body;
+  const inventory = await Inventry.findOne({ _id: inventry }).lean()
+  if (type === "remove") {
+    console.log("count", count)
+    if (inventory?.remaining_qty < qty) {
+      throw new CustomError(
+        400,
+        'REMOVE QUANTITY CAN NOT BE GREATER THEN AVAILABLE QUANTITY',
+        'AVAILABLE_LIMIT_EXCEEDED',
+      );
+    }
+    await Inventry.findOneAndUpdate(
+      { _id: inventry },
+      { $inc: { remaining_qty: -qty } },
+      { new: true },
+    );
 
-  console.log("req.body", req?.body);
-
+  }
   const transaction = new Transaction({
     type,
     status,
@@ -15,17 +31,11 @@ export const addTransaction = async (req) => {
     inventry,
     customer,
     active,
+    weight,
+    applicable_amount,
+    paid_amount
   });
-
   const transactionData = await transaction.save();
-
-  if (type === "remove") {
-    await Inventry.findOneAndUpdate(
-      { _id: inventry },
-      { $inc: { remaining_qty: 10 } },
-      { new: true },
-    );
-  }
   return transactionData;
 };
 
