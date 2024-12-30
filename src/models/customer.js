@@ -14,33 +14,33 @@ const customerSchema = new Schema(
     },
     lastName: {
       type: String,
-      required: true,
       trim: true,
+      default : ''
     },
     phoneNo: {
       type: String,
-      required: true,
       unique: true,
+      default : null
     },
     email: {
       type: String,
-      required: true,
       unique: true,
       trim: true,
       lowercase: true,
+      default : null
     },
     IdentityNo: {
       type: String,
       unique: true,
-      required: true,
+      default : null
     },
     IdentityType: {
       type: String,
-      required: true,
+      default : null
     },
     country: {
       type: String,
-      required: true,
+      default : null
     },
     address: {
       type: String,

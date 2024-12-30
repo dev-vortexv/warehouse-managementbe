@@ -14,17 +14,17 @@ export const addCustomer = async (req) => {
     IdentityNo,
     IdentityType,
   } = req.body;
-  const isCustomerAlreadyExist = await Customer.findOne({ email });
-  if (isCustomerAlreadyExist) {
-    throw new CustomError(
-      statusCodes?.conflict,
-      Message?.alreadyExist,
-      errorCodes?.already_exist,
-    );
+  if (email) {
+    const isCustomerAlreadyExist = await Customer.findOne({ email });
+    if (isCustomerAlreadyExist) {
+      throw new CustomError(
+        statusCodes?.conflict,
+        Message?.alreadyExist,
+        errorCodes?.already_exist,
+      );
+    }
   }
-
   const customerCode = await generateUniqueCode("CUST");
-
   const customer = new Customer({
     customerCode,
     firstName,

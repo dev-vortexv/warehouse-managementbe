@@ -36,7 +36,7 @@ export const addInventory = async (req, res) => {
     rate,
     rate_category,
     customer,
-    product_name: inventory_name,
+    inventory_name,
     remaining_qty:qty,
     inventory_desc,
     driver_name,

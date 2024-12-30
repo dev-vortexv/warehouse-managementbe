@@ -5,6 +5,7 @@ const inventrySchema = new Schema(
     lot_number: {
       type: Number,
       trim: true,
+      default:null
     },
     qty: {
       type: Number,
@@ -52,8 +53,9 @@ const inventrySchema = new Schema(
       type: Number,
       default: 0,
     },
-    product_name: {
+    inventory_name: {
       type: String,
+      default:''
     },
     inventory_desc: {
       type: String,

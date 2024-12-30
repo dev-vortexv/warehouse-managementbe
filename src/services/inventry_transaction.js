@@ -9,7 +9,6 @@ export const addTransaction = async (req) => {
     paid_amount } = req.body;
   const inventory = await Inventry.findOne({ _id: inventry }).lean()
   if (type === "remove") {
-    console.log("count", count)
     if (inventory?.remaining_qty < qty) {
       throw new CustomError(
         400,
