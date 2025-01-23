@@ -4,19 +4,10 @@ import jwt from "jsonwebtoken";
 
 const userSchema = new Schema(
   {
-    firstname: {
+    fullname: {
       type: String,
       required: true,
       trim: true,
-    },
-    lastname: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    company: {
-      type: String,
-      default: null,
     },
     email: {
       type: String,
@@ -27,9 +18,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
     },
-    refreshToken: {
-      type: String,
-    },
+
   },
   { timestamps: true },
 );

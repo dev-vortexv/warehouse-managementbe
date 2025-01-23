@@ -57,44 +57,32 @@ const generateAccessAndRefreshTokens = async (userId) => {
 export const loginUser = async (req) => {
   const { email, password } = req.body;
 
-  // TODO: Validation
+  console.log("reqbody",req.body)
 
   const user = await User.findOne({ email });
   if (!user) {
     throw new CustomError(
-      statusCodes?.notFound,
+      statusCodes?.ok,
       Message?.notFound,
       errorCodes?.not_found,
     );
   }
-
-  const passwordVerify = await user.isPasswordCorrect(password);
-
+  let passwordVerify = false
+  if (user.password == password) {
+    passwordVerify = true
+  }
   if (!passwordVerify) {
     throw new CustomError(
-      statusCodes?.badRequest,
+      statusCodes?.ok,
       Message?.inValid,
       errorCodes?.invalid_credentials,
     );
   }
 
-  const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(
-    user._id,
-  );
-
-  const loginUser = await User.findById(user._id).select(
-    "-password -refreshToken",
-  );
-
-  const options = {
-    httpOnly: true,
-    secure: true,
-  };
-
   return {
-    accessToken,
-    refreshToken,
-    options,
-    loginUser,
-  };
+    success:true,
+    userData: user,
+    message: "login successfully", 
+    resCode : "LOGIN_SUCCESS"
+  }
 };

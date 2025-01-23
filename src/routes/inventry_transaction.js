@@ -3,7 +3,6 @@ import { asyncHandler } from "../utils/asyncWrapper.js";
 import transactionController from "../controllers/inventry_transaction.js";
 
 const transactionRoutes = Router();
-
 transactionRoutes.post(
   "/add",
   asyncHandler(transactionController.addTransaction),
@@ -25,7 +24,6 @@ transactionRoutes.delete(
   asyncHandler(transactionController.deleteTransaction),
 );
 
-// Additional Routes for new queries
 transactionRoutes.get(
   "/inventory/:inventoryId",
   asyncHandler(transactionController.getTransactionsByInventory),

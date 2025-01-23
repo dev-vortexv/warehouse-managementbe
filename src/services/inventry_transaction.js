@@ -32,7 +32,8 @@ export const addTransaction = async (req) => {
     active,
     weight,
     applicable_amount,
-    paid_amount
+    paid_amount,
+    remaining_qty : inventory?.remaining_qty - qty
   });
   const transactionData = await transaction.save();
   return transactionData;

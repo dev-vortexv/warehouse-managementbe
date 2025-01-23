@@ -11,6 +11,16 @@ const getInventoryReport = async (req, res, next) => {
   res.status(statusCodes?.ok).send(loans);
 };
 
+const getInventoryallReport = async (req, res, next) => {
+  const loans = await reportService.generateInventoryAllReport(req, res, next);
+  res.status(statusCodes?.ok).send(loans);
+};
+const getCustomerInventoryData = async (req, res, next) => {
+  const customerId = req?.params?.id
+  const loans = await reportService.getCustomerInventoryData(customerId);
+  res.status(statusCodes?.ok).send(loans);
+};
+
 const getPaymentReport = async (req, res, next) => {
   const loans = await reportService.generatePaymentReport(req, res, next);
   res.status(statusCodes?.ok).send(loans);
@@ -46,4 +56,6 @@ export default {
   getInventoryReport,
   getInventoryReportByDate,
   getLoanReportByDate,
+  getInventoryallReport,
+  getCustomerInventoryData
 };

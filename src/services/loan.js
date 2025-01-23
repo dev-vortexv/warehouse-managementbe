@@ -2,6 +2,7 @@ import { Loan } from "../models/loan.js";
 import { errorCodes, Message, statusCodes } from "../core/common/constant.js";
 import CustomError from "../utils/exception.js";
 import { generateUniqueCode } from "../helper/common.js";
+import { Inventry } from "../models/inventry.js";
 
 export const addLoan = async (req) => {
   const {
@@ -40,6 +41,7 @@ export const addLoan = async (req) => {
     active
   });
   const loanData = await loan.save();
+  await Inventry.findOneAndUpdate({ _id: inventry }, { is_loan: true })
   return loanData;
 };
 

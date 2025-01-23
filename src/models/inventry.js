@@ -76,6 +76,10 @@ const inventrySchema = new Schema(
     },
     loan_applicable_qty: {
       type: Number
+    }, 
+    status : {
+      type : String , 
+      default : 'progress'
     }
   },
   { timestamps: true },

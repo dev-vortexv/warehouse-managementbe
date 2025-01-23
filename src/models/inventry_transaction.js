@@ -15,6 +15,9 @@ const transactionSchema = new Schema(
       type: Number,
       required: true,
     },
+    remaining_qty: {
+      type: Number,
+    },
     weight: {
       type: Number,
     },

@@ -18,5 +18,8 @@ reportsRoutes.get(
   "/loan/:start_date/:end_date",
   asyncHandler(reportsController.getLoanReportByDate),
 );
+reportsRoutes.get("/all", asyncHandler(reportsController.getInventoryallReport))
+reportsRoutes.get("/customer/:id", asyncHandler(reportsController.getCustomerInventoryData))
+
 
 export default reportsRoutes;

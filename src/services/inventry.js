@@ -25,7 +25,7 @@ export const addInventory = async (req, res) => {
     package_weight,
     loan_applicable_bags,
     loan_applicable_qty
-    
+
   } = req.body;
   let date = start_date ?? new Date();
   const inventory = new Inventry({
@@ -37,7 +37,7 @@ export const addInventory = async (req, res) => {
     rate_category,
     customer,
     inventory_name,
-    remaining_qty:qty,
+    remaining_qty: qty,
     inventory_desc,
     driver_name,
     vechile_no,
@@ -48,23 +48,25 @@ export const addInventory = async (req, res) => {
     package_weight,
     loan_applicable_bags,
     loan_applicable_qty
-    });
+  });
 
-  const inventoryData = await inventory.save();
+  const inventoryData = await inventory.save()
   return inventoryData;
 };
 
 export const getAllInventory = async () => {
   const inventory = await Inventry.find()
     .select("-__v")
-    .populate(["customer"]); // category removed for temprory solution
+    .populate(["customer"])
+    .sort({ createdAt: -1 });
   return inventory;
 };
+
 
 export const getInventoryById = async (id) => {
   const inventory = await Inventry.findById(id)
     .select("-__v")
-    .populate(["customer", "category"]);
+    .populate(["customer", "category"]).sort({ _id: -1 });;
   if (!inventory) {
     return {};
   }

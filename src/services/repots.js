@@ -2,6 +2,8 @@ import { Loan } from "../models/loan.js";
 import { errorCodes, Message, statusCodes } from "../core/common/constant.js";
 import CustomError from "../utils/exception.js";
 import { Inventry } from "../models/inventry.js";
+import { Customer } from "../models/customer.js";
+import mongoose from "mongoose";
 
 export const generateInventoryReport = async () => {
   const inventories = await Inventry.aggregate([
@@ -47,6 +49,28 @@ export const generateInventoryReport = async () => {
   ]);
   return inventories;
 };
+
+
+export const generateInventoryAllReport = async () => {
+  const customers = (await Customer.find().lean()).map(item => item._id);
+
+  const Inventries = await Inventry.find({
+    remaining_qty: { $gte: 0 },
+    customer: customers
+  })
+    .populate('customer')
+    .lean();
+  const loans = await Loan.find().lean();
+  return Inventries.map(item => {
+    if (item.is_loan) {
+      item.loan = loans.find(loan => loan.inventry.equals(item._id)) || null;
+    } else {
+      item.loan = null;
+    }
+    return item;
+  });
+};
+
 
 export const generateLoanReport = async () => {
   const loans = await Loan.aggregate([
@@ -143,6 +167,68 @@ export const getInventoryReportByDate = async (start_date, end_date) => {
   ]);
   return inventories;
 };
+
+
+export const getCustomerInventoryData = async (customerId) => {
+  try {
+    // Aggregate pipeline to get the required data
+    const result = await Customer.aggregate([
+      {
+        $match: { _id: new mongoose.Types.ObjectId(customerId) }, // Match the specific customer
+      },
+      {
+        $lookup: {
+          from: 'inventries', // Lookup the inventries collection
+          localField: '_id',
+          foreignField: 'customer',
+          as: 'inventries', // Rename the result to 'inventries'
+        },
+      },
+      {
+        $unwind: {
+          path: '$inventries',
+          preserveNullAndEmptyArrays: true, // Preserve customers without inventory
+        },
+      },
+      {
+        $lookup: {
+          from: 'transactions', // Lookup the transactions collection
+          localField: 'inventries._id', // Match on inventory's _id
+          foreignField: 'inventry', // Match transaction's inventry field
+          as: 'inventries.transactions', // Rename the result to 'transactions' for each inventory
+        },
+      },
+      {
+        $group: {
+          _id: '$_id', // Group by customer ID
+          customerdata: { $first: '$$ROOT' }, // Keep the customer data
+          inventries: { $push: '$inventries' }, // Push all inventries into the 'inventries' array
+        },
+      },
+      {
+        $project: {
+          _id: 0, // Exclude the _id field
+          customerdata: 1, // Include customer data
+          inventries: 1, // Include all inventories with their respective transactions
+        },
+      },
+      {
+        $replaceRoot: { // Replace the root to flatten the structure
+          newRoot: { $mergeObjects: ['$customerdata', { inventries: '$inventries' }] }
+        }
+      }
+    ]);
+
+    if (result.length > 0) {
+      return result[0]; // Return the first (and only) result
+    } else {
+      return null; // Return null if no result found
+    }
+  } catch (error) {
+    console.error('Error fetching customer inventory data:', error);
+    throw error;
+  }
+}
 
 export const generateLoanReportByDate = async (start_date, end_date) => {
   const loans = await Loan.aggregate([
