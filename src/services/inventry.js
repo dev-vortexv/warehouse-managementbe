@@ -58,7 +58,6 @@ export const getAllInventory = async () => {
   const inventory = await Inventry.find()
     .select("-__v")
     .populate(["customer"])
-    .sort({ createdAt: -1 });
   return inventory;
 };
 
